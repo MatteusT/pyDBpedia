@@ -1,5 +1,15 @@
 # pyDBpedia
 
+
+### Installation
+
+Can easily install using pip
+```buildoutcfg
+pip install pydbpedia
+```
+
+### Usage
+
 A simple python package to query dbpedia without the need to use sparql query language. 
 
 You will need add the endpoint as an argument when initiating the class `PyDBpedia`. 
