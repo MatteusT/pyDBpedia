@@ -25,7 +25,7 @@ setup(
     author='Matteus Tanha',
     author_email='matteus.tanha@gmail.com',
     url='https://github.com/MatteusT/pyDBpedia',
-    # download_url='https://github.com/MatteusT/pyDBpedia/archive/v_01.tar.gz',
+    download_url='https://github.com/MatteusT/pyDBpedia/archive/v0.0.1.tar.gz',
     keywords=['DBpedia', 'knowledge base'],
     install_requires=(
         'requests==2.22.0',
