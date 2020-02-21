@@ -103,7 +103,7 @@ class PyDBpedia:
         try:
             result = self._query_dbpedia(query=sparql_query)
         except (TimeoutError, HTTPError, requests.exceptions.HTTPError,
-                requests.exceptions.Timeout, socket.timeout):
+                requests.exceptions.Timeout, socket.timeout) as error:
             logger.exception("Call to pydbpedia endpoint %s failed with an expected error"
                              "sending subjects %s  and predicates %s  "
                              "resulting to the following query: %s",
@@ -111,7 +111,7 @@ class PyDBpedia:
             if self.endpoint != DEFAULT_ENDPOINT:
                 result = self._query_dbpedia(query=sparql_query, url=DEFAULT_ENDPOINT)
             else:
-                raise HTTPError("Cannot connect to DBpedia Endpoint")
+                raise HTTPError("Cannot connect to DBpedia Endpoint: %s", error)
         return result
 
     def get_objects(self, subjects, predicates, **kwargs):
