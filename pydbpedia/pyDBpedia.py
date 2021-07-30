@@ -31,8 +31,14 @@ DBR = "http://dbpedia.org/resource/"
 DEFAULT_ENDPOINT = "http://dbpedia.org/sparql"
 
 
+def format_item(thing):
+    if "http" in thing:
+        return "<{}>".format(thing)
+    return thing
+
+
 def make_in_filter(uris):
-    formatted_uris = ["<{}>".format(uri) for uri in uris]
+    formatted_uris = [format_item(uri) for uri in uris]
     return IN_FILTER.format(",".join(formatted_uris))
 
 
@@ -76,8 +82,8 @@ def make_filters(filters):
 
 
 def create_sparql_query(subjects, predicates, **filters):
-    subjects = ["<{}>".format(format_url(subject)) for subject in subjects]
-    predicates = ["<{}>".format(predicate) for predicate in predicates]
+    subjects = [format_item(format_url(subject)) for subject in subjects]
+    predicates = [format_item(predicate) for predicate in predicates]
     if "redirect" not in filters:
         filters["redirect"] = True
     filters = make_filters(filters)

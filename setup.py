@@ -13,13 +13,19 @@ def find_version(*file_paths):
         return version_match.group(1)
     raise RuntimeError('Unable to find version string.')
 
+# read the contents of your README file
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 package_name = 'pydbpedia'
 
 setup(
     name=package_name,
     description='pyDBpedia is a simple python wrapper for querying dbpedia',
-
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     version=find_version(package_name, '__init__.py'),
     packages=find_packages(exclude=('tests',)),
     author='Matteus Tanha',
