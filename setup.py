@@ -34,7 +34,7 @@ setup(
     download_url='https://github.com/MatteusT/pyDBpedia/archive/v0.0.1.tar.gz',
     keywords=['DBpedia', 'knowledge base'],
     install_requires=(
-        'requests==2.22.0',
+        'requests==2.31.0',
     ),
     include_package_data=True,
     classifiers=[
